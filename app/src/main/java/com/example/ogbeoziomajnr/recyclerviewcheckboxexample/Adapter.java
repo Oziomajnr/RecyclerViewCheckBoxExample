@@ -2,6 +2,7 @@ package com.example.ogbeoziomajnr.recyclerviewcheckboxexample;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import java.util.List;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private List<Model> items = new ArrayList<>();
-
+    SparseBooleanArray itemStateArray= new SparseBooleanArray();
      Adapter() {
     }
 
@@ -61,23 +62,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         }
 
         void bind(int position) {
-            mCheckedTextView.setText(String.valueOf(items.get(position).getPosition()));
-            if (mCheckedTextView.isChecked()) {
-                mCheckedTextView.setChecked(true);
-            }
+            // use the sparse boolean array to check
+            if (!itemStateArray.get(position, false)) {
+                mCheckedTextView.setChecked(false);}
             else {
-                mCheckedTextView.setChecked(false);
+                mCheckedTextView.setChecked(true);
             }
         }
 
         @Override
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
-            if (mCheckedTextView.isChecked()) {
-                mCheckedTextView.setChecked(false);
-            }
-            else {
+            if (!itemStateArray.get(adapterPosition, false)) {
                 mCheckedTextView.setChecked(true);
+                itemStateArray.put(adapterPosition, true);
+            }
+            else  {
+                mCheckedTextView.setChecked(false);
+                itemStateArray.put(adapterPosition, false);
             }
         }
 
