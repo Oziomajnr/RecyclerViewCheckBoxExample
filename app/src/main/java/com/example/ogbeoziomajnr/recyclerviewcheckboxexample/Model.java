@@ -19,14 +19,4 @@ public class Model {
     public void setPosition(int position) {
         this.position = position;
     }
-
-    private boolean isChecked;
-
-    public boolean getChecked() {
-        return isChecked;
-    }
-
-    public void setChecked(boolean checked) {
-        isChecked = checked;
-    }
 }

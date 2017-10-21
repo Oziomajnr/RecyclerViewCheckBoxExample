@@ -66,15 +66,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            // toggle the cheked view based on the checked field in the model
             int adapterPosition = getAdapterPosition();
             if (mCheckedTextView.isChecked()) {
                 mCheckedTextView.setChecked(false);
-                //items.get(adapterPosition).setChecked(false);
             }
             else {
                 mCheckedTextView.setChecked(true);
-                //items.get(adapterPosition).setChecked(true);
             }
         }
     }
