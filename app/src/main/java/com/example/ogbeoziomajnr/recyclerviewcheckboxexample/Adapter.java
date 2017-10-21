@@ -62,6 +62,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
         void bind(int position) {
             mCheckedTextView.setText(String.valueOf(items.get(position).getPosition()));
+            if (mCheckedTextView.isChecked()) {
+                mCheckedTextView.setChecked(true);
+            }
+            else {
+                mCheckedTextView.setChecked(false);
+            }
         }
 
         @Override
